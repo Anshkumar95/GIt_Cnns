@@ -1,0 +1,12 @@
+## Use darknet weights 
+python save_model.py --weights ./data/yolov4.weights --output ./checkpoints/yolov4-416 --input_size 416 --model yolov4 --framework tflite
+
+## Coverting for tf lite 
+python convert_tflite.py --weights ./checkpoints/yolov4-416 --output ./checkpoints/yolov4-416.tflite 
+
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/dog.jpg
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/kite.jpg
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images "./data/images/dog.jpg, ./data/images/kite.jpg"
+
+python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --video ./data/video/video.mp4 --output ./detections/results.avi--framework tflite
+
